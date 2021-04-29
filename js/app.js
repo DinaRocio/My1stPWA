@@ -3,6 +3,7 @@ import { loadCarPage } from "./carPageService.js";
 
 window.pageEvents = {
   loadCarPage,
+  loadCars,
 };
 
 loadCars() 
