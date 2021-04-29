@@ -1,6 +1,6 @@
 const generateCarCard = (car) => {
   const template = document.querySelector("#car-card").innerHTML;
-  return template.replace(/\${(.*?)}/g, (x, g) => car.value[g]);
+  return template.replace(/\${(.*?)}/g, (x, g) => car[g]);
 };
 
 export const appendCars = (cars) => {
