@@ -1,4 +1,4 @@
-import {loadCars} from "./carService.js"
+import { loadCars } from "./carService.js";
 import { loadCarPage } from "./carPageService.js";
 
 window.pageEvents = {
@@ -6,4 +6,4 @@ window.pageEvents = {
   loadCars,
 };
 
-loadCars() 
+loadCars();
