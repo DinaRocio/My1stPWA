@@ -6,20 +6,18 @@
   "start_url": "/https://dinarocio.github.io/My1stPWA/",
   "display": "standalone",
   "orientation": "portrait",
-  "theme_color": "#ffec4f",
-  "background_color": "#bb252b",
+  "theme_color": "#ffda47",
+  "background_color": "#ffdc00",
   "icons": [
     {
-      "src": "assets/manifest-icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable any"
+        "src": "/android-chrome-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
     },
     {
-      "src": "assets/manifest-icon-700.png",
-      "sizes": "700x700",
-      "type": "image/png",
-      "purpose": "maskable any"
+        "src": "/android-chrome-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
     }
-  ]
+]
 }

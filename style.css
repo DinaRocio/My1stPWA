@@ -25,6 +25,9 @@ button {
   outline: none;
   background: rgb(182, 231, 186);
 }
+button:hover{
+ border: 1px rgb(16, 187, 255) solid;
+}
 
 .center {
   text-align: center;
