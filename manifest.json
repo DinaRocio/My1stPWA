@@ -3,10 +3,23 @@
   "short_name": "AutoOfertones",
   "description": "Los mejores ofertones de autos en la web",
   "lang": "es-ES",
-  "start_url": "/",
+  "start_url": "/https://dinarocio.github.io/My1stPWA/",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#ffec4f",
   "background_color": "#bb252b",
-  "icons":[]
+  "icons": [
+    {
+      "src": "assets/manifest-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/manifest-icon-700.png",
+      "sizes": "700x700",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ]
 }
