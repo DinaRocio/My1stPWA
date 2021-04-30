@@ -22,6 +22,7 @@ const carDealsCacheFiles = [
 ];
 self.addEventListener("install", (event) => {
   console.log("From SW: Instalar Evento");
+  self.skipWaiting();
   const preCache = async () => {
     const cache = await caches.open(carDealsCacheName);
     return cache.addAll(carDealsCacheFiles);
@@ -31,6 +32,7 @@ self.addEventListener("install", (event) => {
 });
 self.addEventListener("activate", (event) => {
   console.log("From SW: Activar evento");
+  self.clients.claim();
   const clearCache = async () => {
     const keys = await caches.keys();
     keys.forEach(async (k) => {
