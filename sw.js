@@ -1,9 +1,12 @@
 "use strict";
+//version 1.0
 
 const carDealsCacheName = "carDealsCacheV2";
+const carDealsCacheImagesName = "carDealsCacheImagesV1";
 const carDealsCachePagesName = "carDealsCachePagesV1";
 const carDealsCache = [
   carDealsCacheName,
+  carDealsCacheImagesName,
   carDealsCachePagesName,
 ];
 const carDealsCacheFiles = [
@@ -20,6 +23,13 @@ const carDealsCacheFiles = [
   "index.html",
   "style.css",
 ];
+
+const latestPath =
+  "/pluralsight/courses/progressive-web-apps/service/latest-deals.php";
+const imagePath =
+  "/pluralsight/courses/progressive-web-apps/service/car-image.php";
+const carPath = "/pluralsight/courses/progressive-web-apps/service/car.php";
+
 self.addEventListener("install", (event) => {
   console.log("From SW: Instalar Evento");
   self.skipWaiting();
@@ -44,3 +54,53 @@ self.addEventListener("activate", (event) => {
   };
   event.waitUntil(clearCache());
 });
+
+self.addEventListener("fetch", (event) => {
+  const requestUrl = new URL(event.request.url);
+  const requestPath = requestUrl.pathname;
+  const fileName = requestPath.substring(requestPath.lastIndexOf("/") + 1);
+  if (requestPath == latestPath || fileName == "sw.js") {
+    return event.respondWith(fetch(event.request));
+  } else if (requestPath === imagePath) {
+    return event.respondWith(networkFirstStrategy(event.request));
+  }
+  return event.respondWith(cacheFirstStrategy(event.request));
+});
+
+const cacheFirstStrategy = async (request) => {
+  const cacheResponse = await caches.match(request);
+  return cacheResponse || fetchRequestAndCache(request);
+};
+
+
+const networkFirstStrategy = async (request) => {
+  try {
+    return await fetchRequestAndCache(request);
+  } catch {
+    return await caches.match(request)
+  }
+}
+
+const fetchRequestAndCache = async request => {
+  const networkResponse = await fetch(request);
+  const clonedResponse = networkResponse.clone();
+  const cache = await caches.open(getCacheName(request));
+  cache.put(request, networkResponse);
+  return clonedResponse;
+}
+const getCacheName = (request) => {
+  const requestUrl = new URL(request.url);
+  const requestPath = requestUrl.pathname;
+
+  if (requestPath == imagePath) {
+    return carDealsCacheImagesName;
+  } else if (requestPath == carPath) {
+    return carDealsCachePagesName;
+  } else {
+    return carDealsCacheName;
+  }
+};
+
+self.addEventListener("message", (e) => {
+  e.source.postMessage({clientId: e.source.dispatchEvent, message: "sw"})
+})
