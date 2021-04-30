@@ -1,0 +1,12 @@
+{
+  "name": "Ofertones de Autos",
+  "short_name": "AutoOfertones",
+  "description": "Los mejores ofertones de autos en la web",
+  "lang": "es-ES",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#ffec4f",
+  "background_color": "#bb252b",
+  "icons":[]
+}
