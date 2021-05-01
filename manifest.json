@@ -3,7 +3,7 @@
   "short_name": "AutoOfertones",
   "description": "Los mejores ofertones de autos en la web",
   "lang": "es-ES",
-  "start_url": "/https://dinarocio.github.io/My1stPWA/",
+  "start_url": "https://dinarocio.github.io/My1stPWA/",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#ffda47",
